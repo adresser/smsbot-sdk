@@ -6,7 +6,7 @@
 
 ## Installation
 
-(Currently not on packagist)
+Download the repository or get it via Composer (recommended):
 
 ```sh
 $ composer require adresser/smsbot-sdk
