@@ -23,14 +23,21 @@ class SmsClientFactory
         'device' => DeviceSmsClient::class
     ];
 
-    public function getClient (string $driver, string $authenticationKey) 
+    private string $authenticationKey; 
+
+    public function __construct (string $authenticationKey)
+    {
+        $this->authenticationKey = $authenticationKey; 
+    }
+
+    public function getClient (string $driver) 
     {
         if (!$this->driverExists($driver)) 
             throw new \Exception("Driver doesn't exists", 1);
 
         $serverUri = Enviroment::getConfiguration('server_uri'); 
         $httpClient = new Client(['base_uri' => $serverUri]); 
-        $requestDispatcher = new RequestDispatcher($authenticationKey, $httpClient); 
+        $requestDispatcher = new RequestDispatcher($this->authenticationKey, $httpClient); 
 
         $clientClass = self::$driverClassMap[$driver]; 
         return new $clientClass($requestDispatcher); 
