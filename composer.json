@@ -1,0 +1,22 @@
+{
+    "name": "adresser/smsbot-sdk",
+    "description": "Easy to use SDK for smsbot platform",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lemuelpuglisi",
+            "email": "lemuelpuglisi001@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^8.1",
+        "guzzlehttp/guzzle": "^7.0"
+    }, 
+    "autoload": {
+        "psr-4": {
+            "Adresser\\Smsbot\\": "src/", 
+            "Adresser\\Smsbot\\Test\\": "test/"
+        }
+    }
+}
