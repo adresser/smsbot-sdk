@@ -1,2 +1,4 @@
 vendor
 temp
+.idea
+.phpunit.result.cache

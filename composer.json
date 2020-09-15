@@ -11,12 +11,13 @@
     ],
     "require": {
         "illuminate/collections": "^8.1",
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^7.0",
+        "ext-json": "*"
     }, 
     "autoload": {
         "psr-4": {
             "Adresser\\Smsbot\\": "src/", 
-            "Adresser\\Smsbot\\Test\\": "test/"
+            "Adresser\\Smsbot\\Tests\\": "tests/"
         }
     },
     "require-dev": {

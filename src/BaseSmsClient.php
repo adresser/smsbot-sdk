@@ -41,7 +41,7 @@ abstract class BaseSmsClient implements SmsClientContract
         $arrayOfSms = array_map(function ($element) {
             $sms = new Sms($element['message'], $element['data_type']); 
             $sms->pushDestination($element['mobile_no']); 
-            $sms->setDatabaseInformations($element);
+            $sms->setDatabaseInfos($element);
             return $sms; 
         }, $array);
 
