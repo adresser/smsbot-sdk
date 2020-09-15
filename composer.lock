@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "570a9e28c5fd7fd7d79601c935a86d86",
+    "content-hash": "0e11055d29853d738a8c3088f0c9418d",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -211,7 +211,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.2.0",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -261,7 +261,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.2.0",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -305,7 +305,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.2.0",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2369,6 +2369,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*"
+    },
     "platform-dev": []
 }
