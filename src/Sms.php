@@ -9,10 +9,9 @@ class Sms
 {
     const PLAIN_ENCODING = 'Plain';
     const UNICODE_ENCODING = 'Unicode';
-    private static $allowedEncodings = ['Plain', 'Unicode'];
+    const PHONE_NUMBER_REGEX = "/^\+\d{11,15}$/";
 
-    // const PHONE_NUMBER_REGEX = "/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/";
-    const PHONE_NUMBER_REGEX = "/^[0-9]{10}+$/";
+    private static array $allowedEncodings = ['Plain', 'Unicode'];
 
     private Collection $destinations; 
 
@@ -119,7 +118,6 @@ class Sms
 
     private function isValidPhoneNumber(string $phoneNumber): bool
     {
-        return true; 
-        // return preg_match(self::PHONE_NUMBER_REGEX, $phoneNumber); 
+        return preg_match(self::PHONE_NUMBER_REGEX, $phoneNumber);
     }
 }
