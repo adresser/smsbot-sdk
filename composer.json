@@ -18,5 +18,8 @@
             "Adresser\\Smsbot\\": "src/", 
             "Adresser\\Smsbot\\Test\\": "test/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }
