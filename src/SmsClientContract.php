@@ -2,7 +2,6 @@
 
 namespace Adresser\Smsbot; 
 
-use Adresser\Smsbot\Sms;
 use Illuminate\Support\Collection;
 
 /**

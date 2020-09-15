@@ -2,6 +2,7 @@
 
 namespace Adresser\Smsbot; 
 
+use Exception;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Client\ClientInterface;
 
@@ -25,8 +26,11 @@ class RequestDispatcher
     }
 
     /**
-     * @throws GuzzleHttp\Exception\ClientException
-     * @throws \Exception
+     * @param string $route
+     * @param string $method
+     * @param array $query
+     * @param array $form
+     * @return Response
      */
     public function doRequest(string $route, string $method, array $query = [], array $form = []): Response  
     {

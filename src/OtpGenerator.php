@@ -1,9 +1,6 @@
 <?php
 
-namespace Adresser\Smsbot; 
-
-use GuzzleHttp\Client;
-use Adresser\Smsbot\Otp;
+namespace Adresser\Smsbot;
 
 /**
  * Generate an OTP giving a lifetime in seconds. 

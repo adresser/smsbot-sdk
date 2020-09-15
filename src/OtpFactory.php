@@ -3,10 +3,6 @@
 namespace Adresser\Smsbot; 
 
 use GuzzleHttp\Client;
-use Adresser\Smsbot\Enviroment;
-use Adresser\Smsbot\OtpGenerator;
-use Adresser\Smsbot\OtpValidator;
-use Adresser\Smsbot\RequestDispatcher;
 
 class OtpFactory 
 {
@@ -14,7 +10,7 @@ class OtpFactory
 
     private ?OtpGenerator $cachedOtpGenerator = null; 
     
-    private ?OtpGenerator $cachedOtpValidator = null; 
+    private ?OtpValidator $cachedOtpValidator = null;
 
     public function __construct (string $authenticationKey)
     {
@@ -26,16 +22,16 @@ class OtpFactory
 
     public function getOtpGenerator(): OtpGenerator
     {
-        if ($cachedOtpGenerator == null) 
-            $cachedOtpGenerator = new OtpGenerator($this->requestDispatcher); 
+        if ($this->cachedOtpGenerator == null)
+            $this->cachedOtpGenerator = new OtpGenerator($this->requestDispatcher);
 
         return $this->cachedOtpGenerator; 
     }  
 
     public function getOtpValidator(): OtpValidator
     {
-        if ($cachedOtpValidator == null) 
-            $cachedOtpValidator = new OtpValidator($this->requestDispatcher); 
+        if ($this->cachedOtpValidator == null)
+            $this->cachedOtpValidator = new OtpValidator($this->requestDispatcher);
 
         return $this->cachedOtpValidator; 
     }  

@@ -1,11 +1,6 @@
 <?php
 
-namespace Adresser\Smsbot; 
-
-use Adresser\Smsbot\Sms;
-use Adresser\Smsbot\BaseSmsClient;
-use Adresser\Smsbot\RequestDispatcher;
-use Adresser\Smsbot\SmsClientContract;
+namespace Adresser\Smsbot;
 
 final class HttpSmsClient extends BaseSmsClient implements SmsClientContract
 {

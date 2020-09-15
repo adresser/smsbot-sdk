@@ -3,9 +3,6 @@
 namespace Adresser\Smsbot; 
 
 use GuzzleHttp\Client;
-use Adresser\Smsbot\Enviroment;
-use Adresser\Smsbot\HttpSmsClient;
-use Adresser\Smsbot\DeviceSmsClient;
 
 /**
  * Factory method pattern to get a SmsClient based on

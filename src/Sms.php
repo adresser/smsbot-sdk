@@ -107,7 +107,7 @@ class Sms
         return $this->databaseInfos;
     }
 
-    public function isBulk()
+    public function isBulk(): bool
     {
         return $this->destinations->count() > 1; 
     }

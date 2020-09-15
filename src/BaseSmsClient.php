@@ -2,10 +2,7 @@
 
 namespace Adresser\Smsbot; 
 
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Collection;
-use Adresser\Smsbot\RequestDispatcher;
-use Adresser\Smsbot\SmsClientContract;
 
 abstract class BaseSmsClient implements SmsClientContract
 {
@@ -36,7 +33,7 @@ abstract class BaseSmsClient implements SmsClientContract
         return $this->makeSmsCollectionFromArray($responseBodyArray['data']); 
     }
 
-    protected function makeSmsCollectionFromArray(array $array)
+    protected function makeSmsCollectionFromArray(array $array): Collection
     {
         $arrayOfSms = array_map(function ($element) {
             $sms = new Sms($element['message'], $element['data_type']); 
