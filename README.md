@@ -1,8 +1,10 @@
 # smsbot-php-sdk
 
-[status: Development]
+[![Actions Status](https://github.com/adresser/smsbot-sdk/workflows/PHP%20Composer/badge.svg)](https://github.com/adresser/smsbot-sdk/actions)[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)[![Packagist](https://img.shields.io/packagist/v/adresser/smsbot-sdk.svg)](https://packagist.org/packages/adresser/smsbot-sdk)
 
-🚀An easy-to-use Software Development Kit made in PHP for communicating with the Smsbot API.
+
+
+🚀An **easy-to-use** Software Development Kit made in PHP for communicating with the Smsbot API.
 
 ## Installation
 
@@ -38,6 +40,16 @@ This library supports the following PHP implementations:
 Include the *vendor/autoload.php* file to load all the library classes. 
 
 The **Smsbot** facade provides an ingress to the SDK. However, you can use the internal classes at your convenience. 
+
+
+
+#### Valid phone number pattern
+
+The phone number must follow this pattern: 
+
+```
++(prefix)(number) // es: +13334445566
+```
 
  
 
@@ -111,3 +123,23 @@ if ($validator->validate($otp)) {
 } 
 ```
 
+
+
+#### Using a custom http client
+
+The custom http client must implement the [Psr\Http\Client\ClientInterface](https://www.php-fig.org/psr/psr-18/). 
+
+```php
+$customHttpClient = new CustomHttpClient(); 
+
+$requestDispatcher = new Adresser\Smsbot\RequestDispatcher('auth key', $customHttpClient);
+
+// same with other types of sms clients 
+$deviceSmsClient = new Adresser\Smsbot\DeviceSmsClient($requestDispatcher); 
+```
+
+
+
+#### Getting help
+
+For any question or problem, we suggest to open an issue! 
