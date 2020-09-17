@@ -32,7 +32,7 @@ class SmsClientFactory
         if (!$this->driverExists($driver)) 
             throw new \Exception("Driver doesn't exists", 1);
 
-        $serverUri = Enviroment::getConfiguration('server_uri'); 
+        $serverUri = Environment::getConfiguration('server_uri');
         $httpClient = new Client(['base_uri' => $serverUri]); 
         $requestDispatcher = new RequestDispatcher($this->authenticationKey, $httpClient); 
 

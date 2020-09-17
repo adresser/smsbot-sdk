@@ -14,7 +14,7 @@ class OtpFactory
 
     public function __construct (string $authenticationKey)
     {
-        $serverUri = Enviroment::getConfiguration('server_uri'); 
+        $serverUri = Environment::getConfiguration('server_uri');
         $httpClient = new Client(['base_uri' => $serverUri]); 
 
         $this->requestDispatcher = new RequestDispatcher($authenticationKey, $httpClient);
