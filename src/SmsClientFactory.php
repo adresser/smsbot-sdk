@@ -3,9 +3,6 @@
 namespace Adresser\Smsbot; 
 
 use GuzzleHttp\Client;
-use Adresser\Smsbot\Enviroment;
-use Adresser\Smsbot\HttpSmsClient;
-use Adresser\Smsbot\DeviceSmsClient;
 
 /**
  * Factory method pattern to get a SmsClient based on
@@ -35,7 +32,7 @@ class SmsClientFactory
         if (!$this->driverExists($driver)) 
             throw new \Exception("Driver doesn't exists", 1);
 
-        $serverUri = Enviroment::getConfiguration('server_uri'); 
+        $serverUri = Environment::getConfiguration('server_uri');
         $httpClient = new Client(['base_uri' => $serverUri]); 
         $requestDispatcher = new RequestDispatcher($this->authenticationKey, $httpClient); 
 

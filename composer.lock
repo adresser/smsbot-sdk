@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "570a9e28c5fd7fd7d79601c935a86d86",
+    "content-hash": "0e11055d29853d738a8c3088f0c9418d",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -211,22 +211,25 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.1.0",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "22e701e35a70456f3d1c986060486c11b51fc3d4"
+                "reference": "28957388487b675b730ed8cb4e5f8ee5cd4b4d1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/22e701e35a70456f3d1c986060486c11b51fc3d4",
-                "reference": "22e701e35a70456f3d1c986060486c11b51fc3d4",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/28957388487b675b730ed8cb4e5f8ee5cd4b4d1d",
+                "reference": "28957388487b675b730ed8cb4e5f8ee5cd4b4d1d",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^8.0",
                 "illuminate/macroable": "^8.0",
                 "php": "^7.3"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Required to use the dump method (^5.1)."
             },
             "type": "library",
             "extra": {
@@ -254,11 +257,11 @@
             ],
             "description": "The Illuminate Collections package.",
             "homepage": "https://laravel.com",
-            "time": "2020-09-10T19:50:27+00:00"
+            "time": "2020-09-12T21:29:53+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.1.0",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -302,7 +305,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.1.0",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2366,6 +2369,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*"
+    },
     "platform-dev": []
 }

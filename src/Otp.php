@@ -1,9 +1,6 @@
 <?php
 
-namespace Adresser\Smsbot; 
-
-use Adresser\Smsbot\Enviroment;
-use Adresser\Smsbot\RequestDispatcher;
+namespace Adresser\Smsbot;
 
 class Otp 
 {

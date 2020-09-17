@@ -5,7 +5,7 @@ namespace Adresser\Smsbot;
 /**
  *  Retrieve configurations from the configuration file 'config.php'. 
  */
-final class Enviroment 
+final class Environment
 {
     public static function getConfiguration(string $key): string 
     {

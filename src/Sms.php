@@ -2,14 +2,16 @@
 
 namespace Adresser\Smsbot; 
 
+use Exception;
 use Illuminate\Support\Collection;
 
 class Sms 
 {
-    const ENCODINGS = ['Plain', 'Unicode']; 
-    
-    // const PHONE_NUMBER_REGEX = "/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/";
-    const PHONE_NUMBER_REGEX = "/^[0-9]{10}+$/";
+    const PLAIN_ENCODING = 'Plain';
+    const UNICODE_ENCODING = 'Unicode';
+    const PHONE_NUMBER_REGEX = "/^\+\d{11,15}$/";
+
+    private static array $allowedEncodings = ['Plain', 'Unicode'];
 
     private Collection $destinations; 
 
@@ -17,7 +19,7 @@ class Sms
 
     private string  $encoding; 
 
-    private array   $databaseInformations = [
+    private array   $databaseInfos = [
         "id"            => null,
         "send_through"  => null,
         "gateway_id"    => null, 
@@ -36,7 +38,7 @@ class Sms
         $this->text = $text; 
         
         if (!$this->isValidEncoding($encoding)) 
-            throw new \Exception("Invalid encoding", 1);
+            throw new Exception("Invalid encoding", 1);
         
         $this->encoding = $encoding; 
         $this->destinations = new Collection; 
@@ -50,13 +52,13 @@ class Sms
             'encoding'      => $this->encoding
         ]; 
 
-        return json_encode(array_merge($mandatoryParameters, $this->databaseInformations)); 
+        return json_encode(array_merge($mandatoryParameters, $this->databaseInfos));
     }
 
     public function pushDestination (string $destination): void 
     {
         if (! $this->isValidPhoneNumber($destination)) {
-            throw new \Exception("Invalid phone number.", 1);
+            throw new Exception("Invalid phone number.", 1);
         }
 
         $this->destinations->add($destination); 
@@ -70,7 +72,7 @@ class Sms
     public function setEncoding (string $encoding): void 
     {
         if (!$this->isValidEncoding($encoding)) 
-            throw new \Exception("Invalid encoding", 1);
+            throw new Exception("Invalid encoding", 1);
         
         $this->encoding = $encoding; 
     }
@@ -82,7 +84,7 @@ class Sms
 
     public function setText(string $text): void 
     {
-        $this->text = $test; 
+        $this->text = $text;
     }
 
     public function getText(): string
@@ -90,33 +92,32 @@ class Sms
         return $this->text; 
     }
 
-    public function setDatabaseInformations (array $data): void 
+    public function setDatabaseInfos (array $data): void
     {
         foreach ($data as $key => $value) {
-            if (array_key_exists($key, $this->databaseInformations)) {
-                $this->databaseInformations[$key] = $value; 
+            if (array_key_exists($key, $this->databaseInfos)) {
+                $this->databaseInfos[$key] = $value;
             }
         }
     }
 
-    public function getDatabaseInformations (): array 
+    public function getDatabaseInfos (): array
     {
-        return $this->databaseInformations; 
+        return $this->databaseInfos;
     }
 
-    public function isBulk()
+    public function isBulk(): bool
     {
         return $this->destinations->count() > 1; 
     }
 
     private function isValidEncoding (string $encoding): bool
     {
-        return in_array($encoding, self::ENCODINGS); 
+        return in_array($encoding, self::$allowedEncodings);
     }
 
     private function isValidPhoneNumber(string $phoneNumber): bool
     {
-        return true; 
-        // return preg_match(self::PHONE_NUMBER_REGEX, $phoneNumber); 
+        return preg_match(self::PHONE_NUMBER_REGEX, $phoneNumber);
     }
 }

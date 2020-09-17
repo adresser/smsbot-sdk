@@ -1,10 +1,6 @@
 <?php
 
-namespace Adresser\Smsbot; 
-
-use GuzzleHttp\Client;
-use Adresser\Smsbot\Otp;
-use Adresser\Smsbot\Enviroment;
+namespace Adresser\Smsbot;
 
 /**
  * Validate an OTP previously generated making
