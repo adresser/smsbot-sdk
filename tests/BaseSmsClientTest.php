@@ -5,6 +5,7 @@ namespace Adresser\Smsbot\Tests;
 use Adresser\Smsbot\BaseSmsClient;
 use Adresser\Smsbot\RequestDispatcher;
 use Adresser\Smsbot\Sms;
+use Adresser\Smsbot\Tests\Fake\FakeRequestDispatcher;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -53,11 +54,7 @@ class BaseSmsClientTest extends TestCase
     public function __construct()
     {
         parent::__construct();
-        $this->mockResponseStack = new MockHandler([]);
-        $handlerStack = new HandlerStack($this->mockResponseStack);
-        $this->httpClient = new Client(['handler' => $handlerStack]);
-        $this->requestDispatcher =
-            new RequestDispatcher('fake-key', $this->httpClient);
+        $this->requestDispatcher = new FakeRequestDispatcher();
     }
 
     /**
@@ -94,7 +91,7 @@ class BaseSmsClientTest extends TestCase
     public function testCanGetQueuedSms(): void
     {
         $queuedSmsResponse = new Response(200, [], $this->smsIndexResponseSample);
-        $this->mockResponseStack->append($queuedSmsResponse);
+        $this->requestDispatcher->appendResponse($queuedSmsResponse);
 
         $smsClient = $this->getClassImplementation();
         $smsArrayFromClient = $smsClient->getQueuedSms()->toArray();
@@ -105,7 +102,7 @@ class BaseSmsClientTest extends TestCase
     public function testCanGetSmsHistory(): void
     {
         $smsHistoryResponse = new Response(200, [], $this->smsIndexResponseSample);
-        $this->mockResponseStack->append($smsHistoryResponse);
+        $this->requestDispatcher->appendResponse($smsHistoryResponse);
 
         $smsClient = $this->getClassImplementation();
         $smsArrayFromClient = $smsClient->getSmsHistory()->toArray();
